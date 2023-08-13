@@ -14,7 +14,7 @@ spark = SparkSession.builder
 
 data_df = spark.read.csv(<file_path>, header=True, inferSchema=True)
 
-filtered_df = data_df.filter(col("cylinders") = 8)
+filtered_df = data_df.filter(col("cylinders") == 8)
 selected_columns_df = filtered_df.select("car", "HorsePower")
 
 #save the file to output file
@@ -38,7 +38,7 @@ class DataProcessor:
         self.data_df = self.spark.read.csv(self.input_path, header=True, inferSchema=True)
 
     def process_data(self):
-        filtered_df = data_df.filter(col("cylinders") = 8)
+        filtered_df = data_df.filter(col("cylinders") == 8)
         selected_columns_df = filtered_df.select("car", "HorsePower")
 
     def save_processed_data(self):
